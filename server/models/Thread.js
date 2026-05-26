@@ -15,6 +15,14 @@ const threadSchema = new mongoose.Schema({
 		type:Number,
 		default:0
 		},
+	replyCount: {
+    	type: Number,
+	    default: 0
+	},
+	participantCount: {
+    	type: Number,
+    	default: 0
+	},
 	createdAt: {
 		type:Date,
 		default:Date.now

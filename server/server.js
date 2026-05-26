@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const threadRoutes = require("./routes/threadRoutes");
 const replyRoutes = require("./routes/replyRoutes");
-
+const signalRoutes = require("./routes/signalRoutes");
 
 const app = express();
 
@@ -12,7 +12,7 @@ app.use(express.json());
 
 app.use("/api/threads", threadRoutes);
 app.use("/api/replies", replyRoutes);
-
+app.use("/api/signals", signalRoutes);
 
 
 mongoose.connect("mongodb://127.0.0.1:27017/projectecho")

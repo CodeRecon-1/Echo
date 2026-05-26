@@ -11,6 +11,8 @@ const faqCandidateSchema = new mongoose.Schema({
 
     proposedAnswer: String,
 
+    score: Number,
+
     upvotes: {
         type: Number,
         default: 0
@@ -24,6 +26,11 @@ const faqCandidateSchema = new mongoose.Schema({
     status: {
         type: String,
         default: "DRAFT"
+    },
+
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 });
 
