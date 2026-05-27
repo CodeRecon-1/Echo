@@ -24,7 +24,7 @@ router.get("/:threadId", async (req, res) => {
 
     const replies = await Reply.find({
         threadId: req.params.threadId
-    });
+    }).sort({ createdAt: -1 });
 
     res.json(replies);
 });

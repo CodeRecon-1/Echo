@@ -3,7 +3,7 @@ function calculateFAQScore(thread) {
     let score = 0;
 
     // More replies = more discussion depth
-    score += thread.replyCount * 0.4;
+    score += thread.replyCount * 4;
 
     // Bookmarks indicate useful information
     score += thread.bookmarks * 0.6;

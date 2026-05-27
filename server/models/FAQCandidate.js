@@ -1,5 +1,18 @@
 const mongoose = require("mongoose");
 
+const editSchema = new mongoose.Schema({
+    userId: String,
+
+    field: String,
+
+    newText: String,
+
+    votes: {
+        type: Number,
+        default: 0
+    }
+});
+
 const faqCandidateSchema = new mongoose.Schema({
 
     threadId: {
@@ -22,6 +35,8 @@ const faqCandidateSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+
+    communityEdits: [editSchema],
 
     status: {
         type: String,

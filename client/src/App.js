@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import ThreadPage from "./pages/ThreadPage";
+import ValidationArena from "./pages/ValidationArena";
 
 function App() {
     return (
@@ -13,6 +14,10 @@ function App() {
                 <Route
                     path="/thread/:id"
                     element={<ThreadPage />}
+                />
+                <Route
+                    path="/arena"
+                    element={<ValidationArena />}
                 />
 
             </Routes>
