@@ -5,6 +5,8 @@ const threadRoutes = require("./routes/threadRoutes");
 const replyRoutes = require("./routes/replyRoutes");
 const signalRoutes = require("./routes/signalRoutes");
 const faqRoutes = require("./routes/faqRoutes")
+const officialFaqRoutes = require("./routes/officialFaqRoutes")
+
 const app = express();
 
 app.use(cors());
@@ -14,6 +16,8 @@ app.use("/api/threads", threadRoutes);
 app.use("/api/replies", replyRoutes);
 app.use("/api/signals", signalRoutes);
 app.use("/api/faqs", faqRoutes)
+app.use("/api/official-faqs", officialFaqRoutes)
+
 
 mongoose.connect("mongodb://127.0.0.1:27017/projectecho")
 .then(() => console.log("MongoDB Connected"));

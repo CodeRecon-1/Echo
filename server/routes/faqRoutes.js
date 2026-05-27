@@ -1,5 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const FAQ = require("../models/FAQ");
+
 
 const FAQCandidate = require("../models/FAQCandidate");
 
@@ -24,11 +26,35 @@ router.post("/vote/:id", async (req, res) => {
         faq.downvotes += 1;
     }
 
-    // Promotion Logic
+    // Validation Threshold
     if (
-        faq.upvotes - faq.downvotes >= 5
+        faq.upvotes - faq.downvotes >= 5 &&
+        faq.status !== "VALIDATED"
     ) {
+
         faq.status = "VALIDATED";
+
+        // Create Official FAQ
+        const officialFAQ = new FAQ({
+
+            question:
+                faq.proposedQuestion,
+
+            answer:
+                faq.proposedAnswer,
+
+            sourceThread:
+                faq.threadId,
+
+            createdFrom:
+                faq._id,
+
+            aliases: [
+                faq.proposedQuestion
+            ]
+        });
+
+        await officialFAQ.save();
     }
 
     await faq.save();
